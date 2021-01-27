@@ -1,7 +1,11 @@
 <template>
   <nav class="navbar">
     <div class="company">
-      <router-link :to="{ name: 'Home' }" class="company-info">
+      <router-link
+        :to="{ name: 'Home' }"
+        class="company-info"
+        v-on:click="clearListings"
+      >
         <i class="material-icons company-logo">home</i>
         <span class="company-name">Homies</span>
       </router-link>
@@ -21,36 +25,11 @@
         >Log Out</span
       >
     </div>
-
-    <!-- <div class="ml-4 md:hidden">
-      <button class="text-gray-100 focus:outline-none mr-4">
-        <i class="material-icons border p-1">menu</i>
-      </button>
-    </div>
-
-    <ul class="account px-4 py-4 space-y-1 md:hidden">
-      <li v-if="isLoggedIn" class="text-gray-100 py-2 px-3">
-        <router-link :to="{ name: 'Profile' }">Profile</router-link>
-      </li>
-      <li v-if="!isLoggedIn" class="text-gray-100 py-2 px-3">
-        <router-link :to="{ name: 'Register' }">Register</router-link>
-      </li>
-      <li v-if="!isLoggedIn" class="text-gray-100 py-2 px-3">
-        <router-link :to="{ name: 'Login' }">Log In</router-link>
-      </li>
-      <li
-        v-if="isLoggedIn"
-        class="text-gray-100 py-2 px-3"
-        v-on:click="logoutUser"
-      >
-        <span class="cursor-pointer hover:text-gray-700">Log Out</span>
-      </li>
-    </ul> -->
   </nav>
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters, mapMutations, mapActions } from "vuex";
 
 export default {
   name: "Navbar",
@@ -58,6 +37,7 @@ export default {
     ...mapGetters(["isLoggedIn"]),
   },
   methods: {
+    ...mapMutations(["clearListings"]),
     ...mapActions(["logout"]),
     logoutUser() {
       this.logout();

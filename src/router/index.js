@@ -36,7 +36,7 @@ const routes = [
     },
   },
   {
-    path: "/search/:property_id",
+    path: "/property-info/:property_id",
     name: "PropertyInfo",
     component: () => import("../views/PropertyInfo/PropertyInfo.vue"),
   },

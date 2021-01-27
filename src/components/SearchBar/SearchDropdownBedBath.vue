@@ -75,8 +75,13 @@ export default {
 
 <style scoped>
 select {
-  padding: 0.8rem;
+  border: 1px solid lightgray;
+  font-size: 1.6rem;
   width: 100%;
+}
+
+select:focus {
+  outline: 1px solid teal;
 }
 
 .field {

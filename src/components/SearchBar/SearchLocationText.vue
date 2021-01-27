@@ -61,7 +61,6 @@ export default {
     ...mapActions(["autocompleteLocation"]),
 
     clickBackdrop() {
-      console.log("clicked backdrop");
       this.showList = false;
     },
 
@@ -71,6 +70,7 @@ export default {
     },
 
     selectLocationHouse(location) {
+      this.showList = false;
       if (location.area_type === "city") {
         this.searchLocation =
           `${location.city}, ${location.state_code}` ||
@@ -100,9 +100,11 @@ export default {
 
 input[type="text"] {
   font-size: 1.6rem;
-  padding: 0.7rem;
+  height: 3rem;
+  padding: 0 0.5rem;
   width: 100%;
   border: 1px solid teal;
+  box-shadow: 2px 2px 2px rgb(0, 0, 0, 0.25);
 }
 
 input[type="text"]:focus {
@@ -115,6 +117,7 @@ input[type="text"]:focus {
   background-color: white;
   width: 100%;
   z-index: 2;
+  box-shadow: 0 0 2px rgb(0, 0, 0, 0.25);
 }
 
 .autocomplete-list {

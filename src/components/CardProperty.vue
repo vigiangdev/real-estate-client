@@ -14,9 +14,9 @@
       <div class="property">
         <p class="rooms">
           <span v-if="property.beds">{{ property.beds }} beds</span>
-          <span class="separator">|</span>
+          <span v-if="property.beds" class="separator">|</span>
           <span v-if="property.baths">{{ property.baths || 0 }} baths</span>
-          <span class="separator">|</span>
+          <span v-if="property.baths" class="separator">|</span>
           <span v-if="property.building_size"
             >{{ property.building_size.size }}
             {{ property.building_size.units }}</span

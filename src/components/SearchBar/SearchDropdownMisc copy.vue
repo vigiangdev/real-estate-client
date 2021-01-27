@@ -1,5 +1,5 @@
 <template>
-  <dropdown-menu class="dropdown-misc">
+  <dropdown-menu>
     <template v-slot:title> More </template>
     <template v-slot:fields>
       <slot name="dropdown-fields">
@@ -172,14 +172,80 @@
         </div>
 
         <div class="field">
-          <h3>Property Type</h3>
-          <div
-            v-for="(value, key) in propOptions"
-            v-bind:key="key"
-            class="checkbox-field"
-          >
-            <input type="checkbox" :name="key" v-model="propTypes[key]" />
-            <label :for="key">{{ value }}</label>
+          <div>
+            <h3>Property Type</h3>
+          </div>
+
+          <div>
+            <input
+              type="checkbox"
+              name="single-family"
+              v-model="prop_type['single_family']"
+              v-on:change="constructPropTypeObjToString()"
+            />
+
+            <label for="single-family">Single Family</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              name="multi-family"
+              v-model="prop_type['multi_family']"
+              v-on:change="constructPropTypeObjToString()"
+            />
+
+            <label for="multi-family">Multi-Family</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              name="Condo"
+              v-model="prop_type['condo']"
+              v-on:change="constructPropTypeObjToString()"
+            />
+
+            <label for="condo">Condo</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              name="mobile"
+              v-model="prop_type['mobile']"
+              v-on:change="constructPropTypeObjToString()"
+            />
+
+            <label for="mobile">Mobile</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              name="land"
+              value="land"
+              v-model="prop_type['land']"
+              v-on:change="constructPropTypeObjToString()"
+            />
+
+            <label for="land">Land</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              name="farm"
+              v-model="prop_type['farm']"
+              v-on:change="constructPropTypeObjToString()"
+            />
+
+            <label for="farm">Farm</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              name="other"
+              v-model="prop_type['other']"
+              v-on:change="constructPropTypeObjToString()"
+            />
+
+            <label for="other">Other</label>
           </div>
         </div>
       </slot>
@@ -198,16 +264,7 @@ export default {
   },
   data() {
     return {
-      propTypes: {},
-      propOptions: {
-        single_family: "Single Family",
-        multi_family: "Multi-Family",
-        condo: "Condo",
-        mobile: "Mobile",
-        land: "Land",
-        farm: "Farm",
-        other: "Other",
-      },
+      prop_type: {},
       sortOptions: {
         relevance: "Relevance",
         newest: "Newest",
@@ -282,21 +339,6 @@ export default {
         ) + 1,
         this.optionLotSize.length
       );
-    },
-    prop_type: {
-      get() {
-        return this.query.prop_type;
-      },
-      set() {
-        // let propArr = [];
-        // Object.entries(this.propTypes).forEach((el) => {
-        //   if (el[1] === true) {
-        //     propArr.push(el[0]);
-        //   }
-        // });
-        // this.selectPropType(propArr.join(","));
-        this.selectPropType(this.propTypes);
-      },
     },
     sort: {
       get() {
@@ -387,35 +429,30 @@ export default {
     acreToSqFt(acre) {
       return acre * 43560;
     },
+    constructPropTypeObjToString() {
+      let constructor = [];
+      for (let [key, value] of Object.entries(this.prop_type)) {
+        if (value === true) {
+          constructor.push(key);
+        }
+      }
+      const propTypeString = constructor.join(",");
+      this.selectPropType(propTypeString);
+    },
   },
 };
 </script>
 
 <style scoped>
-.dropdown-misc {
-  font-size: 1.6rem;
-}
-
-h3 {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-input[type="number"],
-input[type="text"] {
-  border: 1px solid lightgray;
-  font-size: 1.6rem;
+input[type="text"],
+input[type="number"] {
+  padding: 0.8rem;
   width: 100%;
 }
 
 select {
-  border: 1px solid lightgray;
-  font-size: 1.6rem;
+  padding: 0.8rem;
   width: 100%;
-}
-
-select:focus {
-  outline: 1px solid teal;
 }
 
 .field {

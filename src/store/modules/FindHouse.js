@@ -40,9 +40,6 @@ const getters = {
   },
 };
 const mutations = {
-  saveQuery(state, payload) {
-    state.query = payload;
-  },
   autocompleteRequest(state) {
     state.status = "loading";
     state.error = null;
@@ -159,7 +156,7 @@ const actions = {
           "x-rapidapi-key": process.env.VUE_APP_RAPIDAPI_KEY,
           useQueryString: true,
         },
-        params: payload || context.state.query,
+        params: payload,
       });
       context.commit("saveListingsSuccess", res.data.properties);
     } catch (err) {

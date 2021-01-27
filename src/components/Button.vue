@@ -22,11 +22,12 @@ export default {
 <style scoped>
 button {
   background-color: teal;
-  padding: 0.8rem;
+  height: 3rem;
   font-size: 1.6rem;
   color: white;
   width: 100%;
   border: none;
+  box-shadow: 2px 2px 2px rgb(0, 0, 0, 0.25);
 }
 
 @media (min-width: 640px) {

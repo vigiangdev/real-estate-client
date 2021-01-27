@@ -38,11 +38,10 @@ export default {
     },
   },
   methods: {
-    ...mapMutations(["saveQuery", "clearListings"]),
+    ...mapMutations(["clearListings"]),
     ...mapActions(["searchListings"]),
   },
   created() {
-    this.saveQuery(this.query);
     this.searchListings(this.query);
   },
   watch: {

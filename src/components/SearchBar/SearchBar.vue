@@ -31,9 +31,6 @@ export default {
     SearchDropdownBedBath,
     SearchDropdownMisc,
   },
-  data() {
-    return {};
-  },
   computed: {
     ...mapGetters(["query"]),
     queryLean() {

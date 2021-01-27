@@ -40,9 +40,6 @@ export default {
 </script>
 
 <style scoped>
-.dropdown-menu {
-}
-
 .backdrop {
   position: absolute;
   top: 0;
@@ -66,19 +63,20 @@ button {
   justify-content: center;
   align-items: center;
   font-size: 1.6rem;
-  padding: 0.5rem 1rem;
+  height: 3rem;
   background-color: teal;
   color: white;
   border: none;
   outline: none;
   z-index: 1;
   width: 100%;
+  box-shadow: 2px 2px 2px rgb(0, 0, 0, 0.25);
 }
 
 .dropdown-fields {
   position: absolute;
-  padding: 1.6rem;
-  top: 4rem;
+  padding: 1rem;
+  top: 3.2rem;
   font-size: 1.6rem;
   background-color: white;
   width: 100%;
@@ -88,7 +86,7 @@ button {
 
 @media (min-width: 576px) {
   .dropdown-fields {
-    min-width: 250px;
+    min-width: 225px;
   }
 }
 </style>
